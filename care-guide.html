@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#9b5de5" />
+  <title>Pet Care Guide — PawCare</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PawCare home"><span class="brand-icon"><img src="pawcare-emblem.png" alt="" /></span><span><strong>PAWCARE</strong><small>USA</small></span></a>
+      <nav class="nav"><a href="index.html#discover">Discover</a><a href="index.html#services">Services</a><a href="index.html#adopt">Adopt</a><a class="active" href="care-guide.html">Pet Care Guide</a><a href="guild.html">Care Guild</a></nav>
+      <div class="top-actions"><button class="theme-toggle" id="themeToggle" type="button">🌙 <span>Dark mode</span></button><a class="account-btn" href="index.html">Back to PawCare</a></div>
+    </header>
+    <main>
+      <section class="care-guide-section" id="care-guide">
+        <div class="care-guide-wrap">
+          <div class="care-guide-intro">
+            <span class="kicker">A GENTLER START FOR EVERY RESCUE</span>
+            <h2>Not sure what your new pet should eat?</h2>
+            <p>Tell us what you know about any animal. PawCare will build a species-aware starter guide with feeding, habitat, handling, grooming or husbandry guidance, health cautions and relevant local help.</p>
+            <div class="stray-note"><strong>Found a stray?</strong> Offer clean water and a quiet, safe space first. Avoid guessing at food if you cannot identify the species or the animal is very young, weak or injured. Contact a veterinarian or rescue for help.</div>
+          </div>
+          <form class="care-form" id="careForm">
+            <div class="care-form-heading"><div><span class="kicker">PET CARE GUIDE</span><h3>Tell us about your pet</h3></div><span class="care-paw">🐾</span></div>
+            <div class="care-grid">
+              <div class="care-field care-wide"><label for="careLocation">Your city or ZIP (for store and vet searches)</label><div class="location-entry"><input id="careLocation" name="location" type="text" placeholder="e.g. Miami, FL or 33101"><button class="soft-btn" id="useCareLocation" type="button">📍 Use my location</button></div><small id="careLocationStatus">Enter a city or ZIP to find nearby options.</small></div>
+              <div class="care-field"><label for="careAnimal">Animal</label><select id="careAnimal" name="animal" required><option value="">Choose an animal</option><optgroup label="Companion animals"><option>Dog</option><option>Cat</option><option>Rabbit</option><option>Guinea pig</option><option>Hamster</option><option>Gerbil</option><option>Rat</option><option>Mouse</option><option>Ferret</option><option>Chinchilla</option><option>Hedgehog</option></optgroup><optgroup label="Birds"><option>Bird (parrot, parakeet)</option><option>Canary or finch</option><option>Pigeon or dove</option><option>Chicken or duck</option><option>Goose or turkey</option></optgroup><optgroup label="Equine and farm animals"><option>Horse</option><option>Pony</option><option>Donkey</option><option>Goat</option><option>Sheep</option><option>Cow</option><option>Pig</option><option>Alpaca or llama</option><option>Other livestock</option></optgroup><optgroup label="Reptiles and amphibians"><option>Turtle or tortoise</option><option>Snake or lizard</option><option>Frog or toad</option><option>Salamander or newt</option></optgroup><optgroup label="Aquatic animals"><option>Freshwater fish</option><option>Marine fish</option><option>Shrimp or crayfish</option><option>Crab</option><option>Snail</option><option>Other aquatic animal</option></optgroup><optgroup label="Invertebrates and wildlife"><option>Insect or spider</option><option>Wild animal / wildlife</option><option>Other / not sure</option></optgroup></select></div>
+              <div class="care-field"><label for="careBreed">Breed (optional)</label><input id="careBreed" name="breed" type="text" placeholder="Breed or unknown"></div>
+              <div class="care-field"><label for="careSex">Male or female</label><select id="careSex" name="sex"><option>Not sure / skip</option><option>Male</option><option>Female</option></select></div>
+              <div class="care-field"><label for="careAge">How old?</label><div class="age-entry"><input id="careAge" name="age" type="number" min="0" step="any" placeholder="Unknown"><select id="careAgeUnit" name="ageUnit" aria-label="Age unit"><option value="years">years</option><option value="months">months</option><option value="weeks">weeks</option></select></div></div>
+              <div class="care-field"><label for="careSize">Size</label><select id="careSize" name="size"><option>Not sure / skip</option><option>Small</option><option>Medium</option><option>Large</option><option>Extra large</option></select></div>
+              <div class="care-field"><label for="careCoat">Coat length</label><select id="careCoat" name="coat"><option>Not sure / skip</option><option>Hairless</option><option>Short</option><option>Medium</option><option>Long</option><option>Wire</option><option>Curly</option><option>Feathers</option></select></div>
+              <div class="care-field care-wide"><label for="careSensitivity">Food or health sensitivity</label><select id="careSensitivity" name="sensitivity"><option>None that I know of</option><option>Sensitive stomach</option><option>Food allergy or itchy skin</option><option>Kidney, liver or urinary issues</option><option>Overweight</option><option>Not sure / unknown history</option></select></div>
+              <div class="care-field care-wide"><label for="careCurrentFood">What are they used to eating?</label><textarea id="careCurrentFood" name="currentFood" rows="3" placeholder="Tell us what they have been eating, if known. If this is a newly found stray, write ‘unknown’. "></textarea></div>
+            </div>
+            <button class="primary-btn full care-submit" type="submit">Get my care plan</button>
+            <p class="care-privacy">Your answers are used to create this on-screen starter guide. This prototype does not diagnose illness or replace a veterinarian.</p>
+          </form>
+          <div class="care-results" id="careResults" aria-live="polite" hidden></div>
+        </div>
+      </section>
+
+
+    </main>
+    <footer><div class="footer-brand"><img src="pawcare-emblem.png" alt="" /> PAWCARE USA</div><span>Animal care, adoption & community.</span><span>© 2026 PawCare</span></footer>
+  </div>
+  <script src="care-guide.js"></script>
+</body>
+</html>

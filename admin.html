@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Guild review desk — PawCare</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-icon"><img src="pawcare-emblem.png" alt="" /></span><span><strong>PAWCARE</strong><small>Review desk</small></span></a>
+      <div class="top-actions"><button class="theme-toggle" id="themeToggle" type="button">🌙 <span>Dark mode</span></button><a class="account-btn" href="guild.html">Care Guild</a></div>
+    </header>
+    <main class="guild-page">
+      <section id="gate" class="care-form" style="max-width:480px">
+        <span class="kicker">STAFF ONLY</span><h3 id="gateTitle">Review desk</h3>
+        <form id="gateForm"><div class="care-field"><label for="pass" id="passLabel">Passcode</label><input id="pass" type="password" required minlength="6" autocomplete="current-password"></div><button class="primary-btn full care-submit" type="submit" id="gateBtn">Open</button></form>
+        <p class="care-privacy" id="gateNote"></p>
+      </section>
+      <section id="desk" hidden>
+        <div class="guild-intro"><span class="kicker">GUILD REVIEW DESK</span><h1>Review caregiver applications</h1><p>Tick each check only after you have actually done it. An application can only be approved when all four checks are ticked.</p></div>
+        <div class="filter-row" id="deskFilters"></div>
+        <div id="deskList" class="desk-list"></div>
+        <p class="proto-note">Prototype note: the passcode only keeps casual visitors out of this browser's review desk — it is not real security. When you connect a server, put this page behind proper staff sign-in. Background checks must be run through a licensed screening provider; record the result here.</p>
+      </section>
+    </main>
+  </div>
+  <script src="guild-core.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

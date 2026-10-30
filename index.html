@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#9b5de5" />
+  <title>PawCare USA — Animal Care Community</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="PawCare USA home">
+        <span class="brand-icon"><img src="pawcare-emblem.png" alt="" /></span>
+        <span>
+          <strong>PAWCARE</strong>
+          <small>USA</small>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="#discover">Discover</a>
+        <a href="#services">Services</a>
+        <a href="#adopt">Adopt</a>
+        <a href="care-guide.html">Pet Care Guide</a>
+        <a href="guild.html">Care Guild</a>
+      </nav>
+
+      <div class="top-actions">
+        <button class="location-pill" id="locationButton" type="button">
+          <span class="dot"></span>
+          <span id="locationLabel">New York, NY</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Switch theme">🌙 <span>Dark mode</span></button>
+        <button class="account-btn" id="accountButton" type="button">Sign in</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-glow glow-one"></div>
+        <div class="hero-glow glow-two"></div>
+        <div class="hero-copy">
+          <div class="eyebrow">🇺🇸 ANIMAL CARE ACROSS THE USA</div>
+          <h1>Better care.<br><span>For every kind.</span></h1>
+          <p>Discover animal shelters, specialist groomers, adoption opportunities and caregivers for companion animals, birds, reptiles, horses, farm animals and more.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#discover">Explore near me</a>
+            <button class="soft-btn" id="vpnButton" type="button">⌁ Virtual location</button>
+          </div>
+          <div class="location-status">
+            <span class="status-dot"></span>
+            <span id="statusText">Virtual location active · New York, NY</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img class="hero-logo" src="pawcare-logo.png" alt="PawCare - Healthy Pets, Happier Lives" />
+          <div class="hero-card-top">
+            <span class="mini-label">YOUR PAWCARE FEED</span>
+            <span class="online"><i></i> Live</span>
+          </div>
+          <div class="pet-preview">
+            <div class="pet-orb">🐾</div>
+            <div>
+              <strong>Care around you</strong>
+              <p id="heroLocationText">New York, NY</p>
+            </div>
+          </div>
+          <div class="hero-stats">
+            <div><strong>Many</strong><span>animal groups</span></div>
+            <div><strong>4</strong><span>care services</span></div>
+            <div><strong>All</strong><span>species welcome</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-section" id="services">
+        <div class="section-heading">
+          <div>
+            <span class="kicker">FIND THE RIGHT HELP</span>
+            <h2>Care for every kind of animal.</h2>
+          </div>
+          <p>Browse by service type and animal group.</p>
+        </div>
+        <div class="quick-grid">
+          <button class="quick-card" data-filter="Shelter">
+            <span class="quick-icon purple" aria-hidden="true">⌂</span>
+            <span><strong>Animal shelters</strong><small>Rescue, foster & support</small></span>
+            <b>→</b>
+          </button>
+          <button class="quick-card" data-filter="Groomer">
+            <span class="quick-icon pink" aria-hidden="true">✂</span>
+            <span><strong>Pet groomers</strong><small>Grooming & wellness</small></span>
+            <b>→</b>
+          </button>
+          <button class="quick-card" data-filter="Care Guild">
+            <span class="quick-icon violet" aria-hidden="true">♡</span>
+            <span><strong>Care Guild</strong><small>Trusted animal caregivers</small></span>
+            <b>→</b>
+          </button>
+          <button class="quick-card" data-filter="Adoption">
+            <span class="quick-icon rose" aria-hidden="true">🐾</span>
+            <span><strong>Adoption</strong><small>Meet your next companion</small></span>
+            <b>→</b>
+          </button>
+        </div>
+      </section>
+
+      <section class="discover-section" id="discover">
+        <div class="section-heading">
+          <div>
+            <span class="kicker">DISCOVER</span>
+            <h2>Find animal care and adoption listings.</h2>
+          </div>
+          <button class="text-btn" id="clearFilters">Clear filters</button>
+        </div>
+
+        <div class="search-panel">
+          <div class="search-wrap">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Search by animal, service, shelter, groomer or location..." />
+          </div>
+          <div class="filter-row" id="filterRow">
+            <button class="filter active" data-filter="All">All</button>
+            <button class="filter" data-filter="Shelter">Shelter</button>
+            <button class="filter" data-filter="Groomer">Groomer</button>
+            <button class="filter" data-filter="Care Guild">Care Guild</button>
+            <button class="filter" data-filter="Veterinarian">Veterinarians</button>
+            <button class="filter" data-filter="Adoption">Adoption</button>
+          </div>
+          <div class="animal-filter-heading">Browse by animal</div>
+          <div class="filter-row animal-filter-row" id="animalFilterRow">
+            <button class="filter active" data-animal-filter="All animals">All animals</button>
+            <button class="filter" data-animal-filter="Dogs">Dogs</button>
+            <button class="filter" data-animal-filter="Cats">Cats</button>
+            <button class="filter" data-animal-filter="Small pets">Small pets</button>
+            <button class="filter" data-animal-filter="Birds">Birds</button>
+            <button class="filter" data-animal-filter="Horses & farm">Horses & farm</button>
+            <button class="filter" data-animal-filter="Reptiles & aquatic">Reptiles & aquatic</button>
+            <button class="filter" data-animal-filter="Wildlife">Wildlife</button>
+          </div>
+        </div>
+
+        <div class="location-banner">
+          <div>
+            <span class="kicker">VIRTUAL U.S. LOCATION</span>
+            <strong id="bannerLocation">New York, NY</strong>
+            <p>Choose a location to see only the shelters, groomers, caregivers and vets listed there. Listings shown here are demonstrations, not verified live providers.</p>
+          </div>
+          <button class="primary-small" id="changeLocation">Change location</button>
+        </div>
+
+        <div class="local-guide" id="localGuide"></div>
+
+        <div class="listing-grid" id="listingGrid"></div>
+      </section>
+
+      <section class="adopt-section" id="adopt">
+        <div class="adopt-copy">
+          <span class="kicker">ADOPTION</span>
+          <h2>One profile away from a forever home.</h2>
+          <p>Explore adoption profiles for dogs, cats, rabbits, birds, horses, reptiles and other animals. Always confirm availability and care needs with the rescue.</p>
+          <a class="primary-btn" href="#discover" data-adopt-filter>Meet adoptable pets</a>
+        </div>
+        <div class="adopt-pets">
+          <article class="pet-card big"><img class="pet-art pet-photo" src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&auto=format&fit=crop&q=85" alt="Golden retriever"><strong>Milo</strong><span>2 years · Friendly</span></article>
+          <article class="pet-card"><img class="pet-art pet-photo" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=85" alt="Cat"><strong>Luna</strong><span>8 months · Playful</span></article>
+          <article class="pet-card"><img class="pet-art pet-photo" src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&auto=format&fit=crop&q=85" alt="Rabbit"><strong>Clover</strong><span>1 year · Gentle</span></article>
+        </div>
+      </section>
+
+      <section class="guild-section" id="guild">
+        <div class="guild-card">
+          <div class="guild-mark">♥</div>
+          <div>
+            <span class="kicker">PAWCARE CARE GUILD</span>
+            <h2>Good people for good animals.</h2>
+            <p>Caregivers, groomers, sitters, walkers and animal-care volunteers apply to the Guild and are reviewed — ID, references, qualifications and a background check — before they are listed.</p>
+          </div>
+          <div class="guild-cta"><a class="primary-btn" href="guild.html#apply">Join the Guild</a><a class="soft-btn" href="guild.html#find">Find a caregiver</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand"><img src="pawcare-emblem.png" alt="" /> PAWCARE USA</div>
+      <span>Animal care, adoption & community.</span>
+      <span>© 2026 PawCare</span>
+    </footer>
+  </div>
+
+  <!-- Location / VPN-style modal -->
+  <div class="modal-backdrop" id="locationModal" hidden>
+    <div class="modal location-modal" role="dialog" aria-modal="true">
+      <button class="close-btn" data-close="locationModal">×</button>
+      <div class="modal-icon">⌁</div>
+      <span class="kicker">VIRTUAL LOCATION</span>
+      <h2>Choose your U.S. location</h2>
+      <p class="modal-note">This browser app can simulate a U.S. location for its listings. It does not change your device's real IP address like a network VPN.</p>
+      <label class="field-label" for="cityType">Type your city</label>
+      <div class="city-search"><input id="cityType" type="text" placeholder="e.g. Newark, Miami or Springfield, MO" aria-controls="citySuggest"><div id="citySuggest" class="city-suggest" hidden></div></div>
+      <p class="modal-note small-note">or choose from the lists</p>
+      <label class="field-label" for="stateSelect">State</label>
+      <select id="stateSelect"></select>
+      <label class="field-label" for="citySelect">City or town</label>
+      <select id="citySelect"></select>
+      <button class="primary-btn full" id="applyLocation">Use this location</button>
+      <div class="vpn-note"><span class="status-dot"></span> Location privacy mode: <strong>ON</strong></div>
+    </div>
+  </div>
+
+  <!-- Provider and animal details modal -->
+  <div class="modal-backdrop" id="providerDetailsModal" hidden>
+    <div class="modal provider-modal" role="dialog" aria-modal="true" aria-labelledby="providerModalTitle">
+      <button class="close-btn" data-close="providerDetailsModal" aria-label="Close">×</button>
+      <div id="providerDetailsContent"></div>
+    </div>
+  </div>
+
+  <!-- Auth modal -->
+  <div class="modal-backdrop" id="authModal" hidden>
+    <div class="modal auth-modal" role="dialog" aria-modal="true">
+      <button class="close-btn" data-close="authModal">×</button>
+      <div class="modal-icon heart">♥</div>
+      <span class="kicker">PAWCARE ACCOUNT</span>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p id="authSubtitle">Sign in to keep your favorites and profile on this device.</p>
+      <form id="authForm">
+        <div id="nameField" hidden>
+          <label class="field-label">Name</label>
+          <input id="nameInput" type="text" placeholder="Your name" />
+        </div>
+        <label class="field-label">Email</label>
+        <input id="emailInput" type="email" required placeholder="you@example.com" />
+        <label class="field-label">Password</label>
+        <input id="passwordInput" type="password" required minlength="6" placeholder="At least 6 characters" />
+        <div class="role-row" id="roleRow" hidden>
+          <button type="button" class="role active" data-role="Pet Owner">Pet owner</button>
+          <button type="button" class="role" data-role="Provider">Provider</button>
+        </div>
+        <button class="primary-btn full" type="submit" id="authSubmit">Sign in</button>
+      </form>
+      <button class="switch-auth" id="switchAuth">Need an account? Create one</button>
+      <p class="security-note">Demo authentication is stored locally in this browser. A production release should use secure server-side authentication.</p>
+    </div>
+  </div>
+
+  <script src="cities-data.js"></script>
+  <script src="city-search.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#9b5de5" />
+  <title>Care Guild — PawCare</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PawCare home"><span class="brand-icon"><img src="pawcare-emblem.png" alt="" /></span><span><strong>PAWCARE</strong><small>USA</small></span></a>
+      <nav class="nav"><a href="index.html#discover">Discover</a><a href="index.html#services">Services</a><a href="index.html#adopt">Adopt</a><a href="care-guide.html">Pet Care Guide</a><a class="active" href="guild.html">Care Guild</a></nav>
+      <div class="top-actions"><button class="theme-toggle" id="themeToggle" type="button">🌙 <span>Dark mode</span></button><a class="account-btn" href="index.html">Back to PawCare</a></div>
+    </header>
+
+    <main class="guild-page">
+      <section class="guild-intro">
+        <span class="kicker">PAWCARE CARE GUILD</span>
+        <h1>Caregivers who apply, get reviewed, then get listed.</h1>
+        <p>Every caregiver applies with their experience, references and qualifications. Our team checks ID, references, qualifications or insurance, and a background check before an application is approved. Only approved caregivers appear below.</p>
+      </section>
+
+      <div class="guild-tabs" role="tablist">
+        <button class="filter active" data-tab="find" role="tab">Find a caregiver</button>
+        <button class="filter" data-tab="apply" role="tab">Become a caregiver</button>
+        <button class="filter" data-tab="activity" role="tab">My activity</button>
+      </div>
+
+      <!-- FIND -->
+      <section id="tab-find" class="guild-panel">
+        <div class="care-grid guild-filters">
+          <div class="care-field care-wide-4"><label for="fType">Type your city</label><div class="city-search"><input id="fType" type="text" placeholder="e.g. Newark, Miami or Springfield, MO" aria-controls="fSuggest"><div id="fSuggest" class="city-suggest" hidden></div></div></div>
+          <div class="care-field"><label for="fState">State</label><select id="fState"></select></div>
+          <div class="care-field"><label for="fCity">City or town</label><select id="fCity"></select></div>
+          <div class="care-field"><label for="fService">Service</label><select id="fService"></select></div>
+          <div class="care-field"><label for="fAnimal">Animal</label><select id="fAnimal"></select></div>
+        </div>
+        <p class="muted guild-count" id="findCount" aria-live="polite"></p>
+        <div class="listing-grid" id="caregiverGrid"></div>
+      </section>
+
+      <!-- APPLY -->
+      <section id="tab-apply" class="guild-panel" hidden>
+        <form class="care-form" id="applyForm">
+          <div class="care-form-heading"><div><span class="kicker">CAREGIVER APPLICATION</span><h3>Apply to join the Guild</h3></div><span class="care-paw">🐾</span></div>
+          <div class="care-grid">
+            <div class="care-field"><label for="aFull">Full legal name</label><input id="aFull" name="fullName" required autocomplete="name"></div>
+            <div class="care-field"><label for="aDisp">Name shown publicly</label><input id="aDisp" name="displayName" required placeholder="e.g. Dana R."><small>First name and last initial is recommended.</small></div>
+            <div class="care-field"><label for="aEmail">Email</label><input id="aEmail" name="email" type="email" required autocomplete="email"><small>Never shown publicly. Owners' requests reach you through this email.</small></div>
+            <div class="care-field"><label for="aPhone">Phone</label><input id="aPhone" name="phone" type="tel" required autocomplete="tel"></div>
+            <div class="care-field care-wide"><label for="aType">Type the city you work in</label><div class="city-search"><input id="aType" type="text" placeholder="e.g. Newark, Miami or Springfield, MO" aria-controls="aSuggest"><div id="aSuggest" class="city-suggest" hidden></div></div><small>Or choose from the lists below.</small></div>
+            <div class="care-field"><label for="aState">State where you work</label><select id="aState" name="state"></select></div>
+            <div class="care-field"><label for="aCity">City or town</label><select id="aCity" name="city"></select></div>
+            <div class="care-field"><label for="aYears">Years of experience with animals</label><input id="aYears" name="years" type="number" min="0" max="60" required></div>
+            <div class="care-field care-wide"><label>Services you offer</label><div class="chk-row" id="aServices"></div></div>
+            <div class="care-field care-wide"><label>Animals you have real experience with</label><div class="chk-row" id="aAnimals"></div><small>Only choose animals you have looked after before.</small></div>
+            <div class="care-field care-wide"><label for="aBio">About you</label><textarea id="aBio" name="bio" rows="3" required maxlength="400" placeholder="Your experience, routine and what owners can expect (max 400 characters)."></textarea></div>
+            <div class="care-field care-wide"><label for="aQual">Qualifications, training or certificates</label><textarea id="aQual" name="qualifications" rows="2" placeholder="e.g. vet-clinic assistant, pet first-aid course, animal-care diploma"></textarea></div>
+            <div class="care-field"><label for="aIns">Do you hold pet-care insurance?</label><select id="aIns" name="insured"><option>Yes</option><option selected>No</option></select><small>You may be asked for proof.</small></div>
+            <div class="care-field"></div>
+            <div class="care-field"><label for="r1n">Reference 1 — name</label><input id="r1n" name="r1n" required></div>
+            <div class="care-field"><label for="r1c">Reference 1 — email or phone</label><input id="r1c" name="r1c" required></div>
+            <div class="care-field"><label for="r2n">Reference 2 — name</label><input id="r2n" name="r2n" required></div>
+            <div class="care-field"><label for="r2c">Reference 2 — email or phone</label><input id="r2c" name="r2c" required></div>
+            <div class="care-field care-wide"><label class="chk"><input type="checkbox" required> I agree to a government ID check and a background check before I can be approved.</label></div>
+            <div class="care-field care-wide"><label class="chk"><input type="checkbox" required> I will only accept animals I am trained and experienced to care for, and will give medication only if I am trained and the owner authorises it in writing.</label></div>
+          </div>
+          <button class="primary-btn full care-submit" type="submit">Submit application</button>
+          <p class="care-privacy">Submitting does not guarantee approval. Your ID, references and qualifications are checked by a reviewer first.</p>
+        </form>
+        <div class="care-results" id="applyDone" hidden>
+          <h3>Application received</h3>
+          <p>Your reference is <b id="applyRef"></b>. A reviewer will check your ID, references, qualifications or insurance, and background check. You can see where your application stands any time in <b>My activity</b> using <b id="applyEmail"></b>.</p>
+          <button class="soft-btn" data-tab-go="activity">Go to My activity</button>
+        </div>
+      </section>
+
+      <!-- ACTIVITY -->
+      <section id="tab-activity" class="guild-panel" hidden>
+        <form class="care-form" id="actForm">
+          <div class="care-form-heading"><div><span class="kicker">MY ACTIVITY</span><h3>Applications, requests and reviews</h3></div></div>
+          <div class="care-field care-wide"><label for="actEmail">Your email</label><div class="location-entry"><input id="actEmail" type="email" required placeholder="The email you used on the application or booking request"><button class="primary-small" type="submit">Look up</button></div><small>Caregivers see their application status and booking requests. Owners see the requests they sent and can review accepted bookings.</small></div>
+        </form>
+        <div id="actResults" class="act-results"></div>
+      </section>
+
+      <p class="proto-note">Prototype note: this version saves data in the current browser so the whole workflow can be tried end to end. Before opening it to the public, connect it to a server with secure sign-in, email notifications and a payment/contact process.</p>
+    </main>
+
+    <footer><div class="footer-brand"><img src="pawcare-emblem.png" alt="" /> PAWCARE USA</div><span>Animal care, adoption & community.</span><span>© 2026 PawCare</span></footer>
+  </div>
+
+  <!-- booking modal -->
+  <div class="modal-backdrop" id="bookModal" hidden>
+    <div class="modal wide-modal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+      <button class="close-btn" data-close="bookModal" aria-label="Close">×</button>
+      <span class="kicker">BOOKING REQUEST</span><h2 id="bookTitle">Request a caregiver</h2>
+      <form id="bookForm">
+        <div class="care-grid">
+          <div class="care-field"><label for="bkName">Your name</label><input id="bkName" required></div>
+          <div class="care-field"><label for="bkEmail">Your email</label><input id="bkEmail" type="email" required></div>
+          <div class="care-field"><label for="bkPhone">Phone (optional)</label><input id="bkPhone" type="tel"></div>
+          <div class="care-field"><label for="bkPet">Animal's name</label><input id="bkPet"></div>
+          <div class="care-field"><label for="bkService">Service</label><select id="bkService"></select></div>
+          <div class="care-field"><label for="bkAnimal">Animal</label><select id="bkAnimal"></select></div>
+          <div class="care-field"><label for="bkStart">From</label><input id="bkStart" type="date" required></div>
+          <div class="care-field"><label for="bkEnd">To (optional)</label><input id="bkEnd" type="date"></div>
+          <div class="care-field care-wide"><label for="bkMsg">Message</label><textarea id="bkMsg" rows="3" required placeholder="Routine, feeding, medication, health or behaviour the caregiver should know about."></textarea></div>
+        </div>
+        <button class="primary-btn full care-submit" type="submit">Send request</button>
+        <p class="care-privacy">The caregiver sees your name, email and message. Payment and terms are agreed directly with the caregiver.</p>
+      </form>
+      <div id="bookDone" hidden><h3>Request sent</h3><p>Your reference is <b id="bookRef"></b>. The caregiver can accept or decline. Check <b>My activity</b> with your email to see the answer.</p><button class="soft-btn" data-close="bookModal">Close</button></div>
+    </div>
+  </div>
+
+  <!-- reviews modal -->
+  <div class="modal-backdrop" id="reviewsModal" hidden>
+    <div class="modal wide-modal" role="dialog" aria-modal="true" aria-labelledby="reviewsTitle">
+      <button class="close-btn" data-close="reviewsModal" aria-label="Close">×</button>
+      <h2 id="reviewsTitle">Reviews</h2><div id="reviewsList"></div>
+    </div>
+  </div>
+
+  <!-- rate modal -->
+  <div class="modal-backdrop" id="rateModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rateTitle">
+      <button class="close-btn" data-close="rateModal" aria-label="Close">×</button>
+      <h2 id="rateTitle">Leave a review</h2>
+      <form id="rateForm">
+        <div class="star-input" role="radiogroup" aria-label="Rating">
+          <input type="radio" name="rating" id="s5" value="5"><label for="s5" title="5 stars">★</label>
+          <input type="radio" name="rating" id="s4" value="4"><label for="s4" title="4 stars">★</label>
+          <input type="radio" name="rating" id="s3" value="3"><label for="s3" title="3 stars">★</label>
+          <input type="radio" name="rating" id="s2" value="2"><label for="s2" title="2 stars">★</label>
+          <input type="radio" name="rating" id="s1" value="1"><label for="s1" title="1 star">★</label>
+        </div>
+        <div class="care-field"><label for="rvText">Your experience</label><textarea id="rvText" rows="4" required maxlength="500"></textarea></div>
+        <button class="primary-btn full care-submit" type="submit">Post review</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="cities-data.js"></script>
+  <script src="city-search.js"></script>
+  <script src="guild-core.js"></script>
+  <script src="guild.js"></script>
+</body>
+</html>
